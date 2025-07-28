@@ -11,10 +11,11 @@ public class ServoController {
     private final Context pi4j;
     private final Pwm pwm;
     private final Spi spi;
+    private final PID pid;
 
-    public ServoController() {
+    public ServoController(PID pid) {
         this.pi4j = Pi4J.newAutoContext();
-
+        this.pid = pid;
         // PWM Setup for GPIO18 (PWM0)
         PwmConfig pwmConfig = Pwm.newConfigBuilder(pi4j)
                 .id("servo-pwm")
